@@ -21,5 +21,40 @@
     <h1>Fuck TypeScript</h1>
     <h2>404 Not found.</h2>
     <p>Back to <a href="/index.html">main page</a>.</p>
+
+    <button title="Toggle theme" class="theme-toggle sun" onclick="toggleTheme()">⚫</button>
+
+    <script>
+      function toggleTheme() {
+        const body = document.body;
+        const button = document.querySelector('.theme-toggle');
+        
+        body.classList.add('fade');
+        
+        setTimeout(() => {
+          if (body.classList.contains('dark-theme')) {
+            body.classList.replace('dark-theme', 'light-theme');
+            button.textContent = '⚪';
+            button.classList.replace('sun', 'moon');
+            localStorage.setItem('theme', 'light');
+          } else {
+            body.classList.replace('light-theme', 'dark-theme');
+            button.textContent = '⚫';
+            button.classList.replace('moon', 'sun');
+            localStorage.setItem('theme', 'dark');
+          }
+
+          body.classList.remove('fade');
+        }, 500);
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.body.classList.add(`${savedTheme}-theme`);
+        document.querySelector('.theme-toggle').textContent = savedTheme === 'dark' ? '⚫' : '⚪';
+        document.querySelector('.theme-toggle').classList.add(savedTheme === 'dark' ? 'sun' : 'moon');
+      });
+    </script>
+    <script src="script.js"></script>
   </body>
 </html>

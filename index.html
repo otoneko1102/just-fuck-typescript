@@ -17,10 +17,44 @@
     <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
   </head>
-  <body>
+  <body class="dark-theme">
     <h1>Fuck TypeScript</h1>
     <h2>Why?</h2>
     <p class="typing" text="Do we need to talk about it? We should have noticed it already...;Are the foolish users who call JavaScript an immature language and revere TypeScript as a deity really sane?;They use TypeScript excessively even in situations where it's not necessary, resulting in redundant source code :("></p>
+    
+    <button title="Toggle theme" class="theme-toggle sun" onclick="toggleTheme()">⚫</button>
+
+    <script>
+      function toggleTheme() {
+        const body = document.body;
+        const button = document.querySelector('.theme-toggle');
+        
+        body.classList.add('fade');
+        
+        setTimeout(() => {
+          if (body.classList.contains('dark-theme')) {
+            body.classList.replace('dark-theme', 'light-theme');
+            button.textContent = '⚪';
+            button.classList.replace('sun', 'moon');
+            localStorage.setItem('theme', 'light');
+          } else {
+            body.classList.replace('light-theme', 'dark-theme');
+            button.textContent = '⚫';
+            button.classList.replace('moon', 'sun');
+            localStorage.setItem('theme', 'dark');
+          }
+
+          body.classList.remove('fade');
+        }, 500);
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.body.classList.add(`${savedTheme}-theme`);
+        document.querySelector('.theme-toggle').textContent = savedTheme === 'dark' ? '⚫' : '⚪';
+        document.querySelector('.theme-toggle').classList.add(savedTheme === 'dark' ? 'sun' : 'moon');
+      });
+    </script>
     <script src="script.js"></script>
   </body>
 </html>
