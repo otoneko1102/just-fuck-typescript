@@ -1,0 +1,21 @@
+body {
+  background-color: black;
+  color: green;
+  font-family: 'DotGothic16', sans-serif;
+}
+
+.typing::after {
+  content: '▎';
+  display: inline;
+  animation: blink 0.75s step-start infinite;
+}
+
+.no-cursor::after {
+  display: none;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
