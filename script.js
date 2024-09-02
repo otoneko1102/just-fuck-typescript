@@ -25,10 +25,58 @@ document.addEventListener("DOMContentLoaded", async function () {
   }
 });
 
+document.getElementById('menu-toggle').addEventListener('click', function() {
+  document.getElementById('menu').classList.toggle('open');
+});
+
+fetch('./sitemap.xml')
+  .then(response => response.text())
+  .then(data => {
+    const parser = new DOMParser();
+    const xml = parser.parseFromString(data, 'application/xml');
+    const urls = xml.querySelectorAll('url > loc');
+    const menuItems = document.getElementById('menu-items');
+
+    urls.forEach(url => {
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = url.textContent;
+      const text = url.textContent.split('/').at(-1)
+      a.textContent = url.textContent.split('//').at(-1) === text ? 'home' : text;
+      li.appendChild(a);
+      menuItems.appendChild(li);
+    });
+  });
+
 function vote(language) {
   if (language === 'JavaScript') {
     alert('Nice :)');
   } else if (language === 'TypeScript') {
     alert('Oh, fuck :(');
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const voteButtons = document.getElementById('vote-buttons');
+  const typeScriptButton = voteButtons.children[1];
+  const emojiContainer = document.createElement('div');
+  
+  emojiContainer.id = 'emoji-container';
+  voteButtons.appendChild(emojiContainer);
+
+  typeScriptButton.addEventListener('mouseover', () => {
+    generateEmojis(emojiContainer, 25);
+  });
+
+  typeScriptButton.addEventListener('mouseout', () => {
+    emojiContainer.style.display = 'none';
+    emojiContainer.innerHTML = '';
+  });
+});
+
+function generateEmojis(container, count) {
+  container.style.display = 'block';
+  for (let i = 0; i < count; i++) {
+    container.innerHTML += ' :(';
   }
 }
