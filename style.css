@@ -56,3 +56,29 @@ body {
   background-color: white;
   color: black;
 }
+
+button {
+  font-family: 'DotGothic16', sans-serif;
+  padding: 10px 20px;
+  border-radius: 0;
+  border: 2px solid;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.dark-theme button {
+  color: green;
+  background-color: black;
+  border-color: green;
+}
+
+.light-theme button {
+  color: black;
+  background-color: white;
+  border-color: black;
+}
+
+button:hover {
+  opacity: 0.8;
+}

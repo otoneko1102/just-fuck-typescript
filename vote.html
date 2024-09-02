@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fuck TypeScript, Use JavaScript</title>
+    <meta name="theme-color" content="#f7e025">
+    <meta name="description" content="Why use TypeScript? Use JavaScript!">
+    <meta property="og:title" content="Fuck TypeScript, Use JavaScript">  
+    <meta property="og:description" content="Why use TypeScript? Use JavaScript!">  
+    <meta property="og:url" content="https://just.fuck-typescri.pt/vote">  
+    <meta name="twitter:card" content="summary_large_image">  
+    <meta name="twitter:site" content="@rin_pineapple"> 
+    <meta name="twitter:title" content="Fuck TypeScript, Use JavaScript">
+    <meta name="twitter:description" content="Why use TypeScript? Use JavaScript!">
+
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body class="dark-theme">
+    <h1>Fuck TypeScript</h1>
+    <h2>Vote!</h2>
+    <p class="typing" text="Which do you like?"></p>
+    <div id="vote-buttons">
+      <button onclick="vote('JavaScript')">JavaScript</button>
+      <button onclick="vote('TypeScript')">TypeScript</button>
+    </div>
+    <button title="Toggle theme" class="theme-toggle sun" onclick="toggleTheme()">⚫</button>
+
+    <script>
+      function toggleTheme() {
+        const body = document.body;
+        const button = document.querySelector('.theme-toggle');
+        
+        body.classList.add('fade');
+        
+        setTimeout(() => {
+          if (body.classList.contains('dark-theme')) {
+            body.classList.replace('dark-theme', 'light-theme');
+            button.textContent = '⚪';
+            button.classList.replace('sun', 'moon');
+            localStorage.setItem('theme', 'light');
+          } else {
+            body.classList.replace('light-theme', 'dark-theme');
+            button.textContent = '⚫';
+            button.classList.replace('moon', 'sun');
+            localStorage.setItem('theme', 'dark');
+          }
+
+          body.classList.remove('fade');
+        }, 500);
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.body.classList.add(`${savedTheme}-theme`);
+        document.querySelector('.theme-toggle').textContent = savedTheme === 'dark' ? '⚫' : '⚪';
+        document.querySelector('.theme-toggle').classList.add(savedTheme === 'dark' ? 'sun' : 'moon');
+      });
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>

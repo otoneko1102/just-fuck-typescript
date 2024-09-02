@@ -24,3 +24,11 @@ document.addEventListener("DOMContentLoaded", async function () {
     await typeText();
   }
 });
+
+function vote(language) {
+  if (language === 'JavaScript') {
+    alert('Nice :)');
+  } else if (language === 'TypeScript') {
+    alert('Oh, fuck :(');
+  }
+}
