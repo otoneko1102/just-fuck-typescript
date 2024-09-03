@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fuck TypeScript, Use JavaScript</title>
+    <meta name="theme-color" content="#f7e025">
+    <meta name="description" content="Why use TypeScript? Use JavaScript!">
+    <meta property="og:title" content="Fuck TypeScript, Use JavaScript">  
+    <meta property="og:description" content="Why use TypeScript? Use JavaScript!">  
+    <meta property="og:url" content="https://just.fuck-typescri.pt/convert">  
+    <meta name="twitter:card" content="summary_large_image">  
+    <meta name="twitter:site" content="@rin_pineapple"> 
+    <meta name="twitter:title" content="Fuck TypeScript, Use JavaScript">
+    <meta name="twitter:description" content="Why use TypeScript? Use JavaScript!">
+
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- TypeScript Compiler CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/typescript@latest/lib/typescript.js"></script>
+  </head>
+  <body class="dark-theme">
+    <button title="Menu" id="menu-toggle" class="menu-toggle">☰</button>
+
+    <div id="menu" class="menu">
+      <ul id="menu-items"></ul>
+    </div>
+
+    <h1>Fuck TypeScript</h1>
+    <h2>Convert your TypeScript to JavaScript!</h2>
+
+    <div class="converter-container">
+      <div class="editor-container">
+        <label for="tsCode">TypeScript:</label>
+        <textarea id="tsCode" placeholder="Type your TypeScript code here..."></textarea>
+      </div>
+      <div class="buttons-container">
+        <button onclick="compileTS()">Convert</button>
+        <button onclick="clearCode()">Clear</button>
+        <button onclick="downloadJS()">Download JS</button>
+      </div>
+      <div class="editor-container">
+        <label for="jsCode">JavaScript:</label>
+        <textarea id="jsCode" placeholder="JavaScript output will appear here..." readonly></textarea>
+      </div>
+    </div>
+
+    <button title="Toggle theme" class="theme-toggle sun" onclick="toggleTheme()">⚫</button>
+
+    <script>
+      function toggleTheme() {
+        const body = document.body;
+        const button = document.querySelector('.theme-toggle');
+        
+        body.classList.add('fade');
+        
+        setTimeout(() => {
+          if (body.classList.contains('dark-theme')) {
+            body.classList.replace('dark-theme', 'light-theme');
+            button.textContent = '⚪';
+            button.classList.replace('sun', 'moon');
+            localStorage.setItem('theme', 'light');
+          } else {
+            body.classList.replace('light-theme', 'dark-theme');
+            button.textContent = '⚫';
+            button.classList.replace('moon', 'sun');
+            localStorage.setItem('theme', 'dark');
+          }
+
+          body.classList.remove('fade');
+        }, 500);
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.body.classList.add(`${savedTheme}-theme`);
+        const themeToggleButton = document.querySelector('.theme-toggle');
+        themeToggleButton.textContent = savedTheme === 'dark' ? '⚫' : '⚪';
+        themeToggleButton.classList.add(savedTheme === 'dark' ? 'sun' : 'moon');
+      });
+
+      function compileTS() {
+        const tsCode = document.getElementById('tsCode').value;
+        try {
+          const jsCode = ts.transpile(tsCode);
+          document.getElementById('jsCode').value = jsCode;
+        } catch (error) {
+          document.getElementById('jsCode').value = 'Error: ' + error.message;
+        }
+      }
+
+      function clearCode() {
+        document.getElementById('tsCode').value = '';
+        document.getElementById('jsCode').value = '';
+      }
+
+      function downloadJS() {
+        const jsCode = document.getElementById('jsCode').value;
+        if (!jsCode) {
+          alert('No JavaScript code to download!');
+          return;
+        }
+        const fileName = prompt('Enter the file name', 'converted.js') || 'converted.js';
+        const blob = new Blob([jsCode], { type: 'text/javascript' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = fileName;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+      }
+    </script>
+
+    <script src="script.js"></script>
+  </body>
+</html>

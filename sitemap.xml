@@ -7,13 +7,19 @@
 
 	<url>
 		<loc>https://just.fuck-typescri.pt</loc>
-		<lastmod>2024-09-02</lastmod>
+		<lastmod>2024-09-03</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>1.00</priority>
 	</url>
 	<url>
+		<loc>https://just.fuck-typescri.pt/convert</loc>
+		<lastmod>2024-09-03</lastmod>
+		<changefreq>weekly</changefreq>
+		<priority>0.90</priority>
+	</url>
+	<url>
 		<loc>https://just.fuck-typescri.pt/vote</loc>
-		<lastmod>2024-09-02</lastmod>
+		<lastmod>2024-09-03</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.80</priority>
 	</url>
