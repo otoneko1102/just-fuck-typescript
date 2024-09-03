@@ -46,12 +46,19 @@ h2 {
 }
 
 .custom-modal-content .buttons-container {
+  display: flex;
+  justify-content: flex-end;
   margin-top: 20px;
 }
 
 .custom-modal-content button {
   margin: 0 5px;
 }
+
+.custom-modal-content .buttons-container.single-button {
+  justify-content: flex-end;
+}
+
 
 .dark-theme .custom-modal-content input {
   background-color: #1e1e1e;

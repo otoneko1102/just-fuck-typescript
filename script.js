@@ -18,8 +18,9 @@ function createModals() {
   alertModal.innerHTML = `
     <div class="custom-modal-content">
       <p id="alertMessage"></p>
-      <br>
-      <button onclick="closeAlert()">OK</button>
+      <div class="buttons-container single-button">
+        <button onclick="closeAlert()">OK</button>
+      </div>
     </div>
   `;
   document.body.appendChild(alertModal);
@@ -35,8 +36,8 @@ function createModals() {
       <input type="text" id="promptInput">
       <br>
       <div class="buttons-container">
-        <button onclick="submitPrompt()">OK</button>
         <button onclick="closePrompt()">Cancel</button>
+        <button onclick="submitPrompt()">OK</button>
       </div>
     </div>
   `;
