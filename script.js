@@ -1,3 +1,75 @@
+document.addEventListener('DOMContentLoaded', () => {
+  // Initialize theme
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  document.body.classList.add(`${savedTheme}-theme`);
+  const themeToggleButton = document.querySelector('.theme-toggle');
+  themeToggleButton.textContent = savedTheme === 'dark' ? '⚫' : '⚪';
+  themeToggleButton.classList.add(savedTheme === 'dark' ? 'sun' : 'moon');
+
+  // Create custom modals
+  createModals();
+});
+
+function createModals() {
+  // Create custom alert modal
+  const alertModal = document.createElement('div');
+  alertModal.id = 'customAlert';
+  alertModal.className = 'custom-modal';
+  alertModal.innerHTML = `
+    <div class="custom-modal-content">
+      <p id="alertMessage"></p>
+      <br>
+      <button onclick="closeAlert()">OK</button>
+    </div>
+  `;
+  document.body.appendChild(alertModal);
+
+  // Create custom prompt modal
+  const promptModal = document.createElement('div');
+  promptModal.id = 'customPrompt';
+  promptModal.className = 'custom-modal';
+  promptModal.innerHTML = `
+    <div class="custom-modal-content">
+      <p id="promptMessage"></p>
+      <br>
+      <input type="text" id="promptInput">
+      <br>
+      <div class="buttons-container">
+        <button onclick="submitPrompt()">OK</button>
+        <button onclick="closePrompt()">Cancel</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(promptModal);
+}
+
+function showAlert(message) {
+  const alertElement = document.getElementById('customAlert');
+  document.getElementById('alertMessage').textContent = message;
+  alertElement.style.display = 'flex';
+}
+
+function closeAlert() {
+  document.getElementById('customAlert').style.display = 'none';
+}
+
+function showPrompt(message, callback) {
+  const promptElement = document.getElementById('customPrompt');
+  document.getElementById('promptMessage').textContent = message;
+  promptElement.style.display = 'flex';
+  window.promptCallback = callback;
+}
+
+function submitPrompt() {
+  const input = document.getElementById('promptInput').value;
+  document.getElementById('customPrompt').style.display = 'none';
+  window.promptCallback(input);
+}
+
+function closePrompt() {
+  document.getElementById('customPrompt').style.display = 'none';
+}
+
 document.addEventListener("DOMContentLoaded", async function () {
   const typedOutputs = document.querySelectorAll('.typing');
 
@@ -50,9 +122,9 @@ fetch('./sitemap.xml')
 
 function vote(language) {
   if (language === 'JavaScript') {
-    alert('Nice :)');
+    showAlert('Nice :)');
   } else if (language === 'TypeScript') {
-    alert('Oh, fuck :(');
+    showAlert('Oh, fuck :(');
   }
 }
 
@@ -65,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
   voteButtons.appendChild(emojiContainer);
 
   typeScriptButton.addEventListener('mouseover', () => {
-    generateEmojis(emojiContainer, 25);
+    generateEmojis(emojiContainer, 5);
   });
 
   typeScriptButton.addEventListener('mouseout', () => {

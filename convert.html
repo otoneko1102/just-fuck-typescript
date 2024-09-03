@@ -97,19 +97,23 @@
       function downloadJS() {
         const jsCode = document.getElementById('jsCode').value;
         if (!jsCode) {
-          alert('No JavaScript code to download!');
+          // alert('No JavaScript code to download!');
+          showAlert('No JavaScript code to download!');
           return;
         }
-        const fileName = prompt('Enter the file name', 'converted.js') || 'converted.js';
-        const blob = new Blob([jsCode], { type: 'text/javascript' });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = fileName;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        URL.revokeObjectURL(url);
+        const d = 'converted.js';
+        showPrompt(`Enter the file name (default: ${d})`, function(fileName) {
+          if (!fileName) fileName = d;
+          const blob = new Blob([jsCode], { type: 'text/javascript' });
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = fileName;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          URL.revokeObjectURL(url);
+        });
       }
     </script>
 
