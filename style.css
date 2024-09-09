@@ -221,7 +221,6 @@ h2 {
 }
 
 .typing {
-  display: flex;
   flex-direction: column;
 }
 
