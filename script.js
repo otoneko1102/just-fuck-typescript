@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize theme
   const savedTheme = localStorage.getItem('theme') || 'dark';
   document.body.classList.add(`${savedTheme}-theme`);
   const themeToggleButton = document.querySelector('.theme-toggle');
