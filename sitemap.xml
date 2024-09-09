@@ -6,20 +6,20 @@
 	http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
 	<url>
-		<loc>https://just.fuck-typescri.pt</loc>
-		<lastmod>2024-09-03</lastmod>
+		<loc>https://just.fuck-typescript.net</loc>
+		<lastmod>2024-09-09</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>1.00</priority>
 	</url>
 	<url>
-		<loc>https://just.fuck-typescri.pt/convert</loc>
-		<lastmod>2024-09-03</lastmod>
+		<loc>https://just.fuck-typescript.net/convert</loc>
+		<lastmod>2024-09-09</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.90</priority>
 	</url>
 	<url>
-		<loc>https://just.fuck-typescri.pt/vote</loc>
-		<lastmod>2024-09-03</lastmod>
+		<loc>https://just.fuck-typescript.net/vote</loc>
+		<lastmod>2024-09-09</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.80</priority>
 	</url>

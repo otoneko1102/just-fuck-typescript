@@ -31,7 +31,7 @@ h2 {
 }
 
 .custom-modal-content {
-  background-color: #2d2d2d;
+  background-color: black;
   border: 2px solid green;
   border-radius: 0;
   padding: 20px;
@@ -70,7 +70,7 @@ h2 {
 }
 
 .dark-theme .custom-modal-content {
-  background-color: #2d2d2d;
+  background-color: black;
   color: green;
   border-color: green;
 }
@@ -218,6 +218,11 @@ h2 {
 
 .menu.open {
   left: 0;
+}
+
+.typing {
+  display: flex;
+  flex-direction: column;
 }
 
 .typing::after {
