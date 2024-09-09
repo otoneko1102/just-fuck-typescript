@@ -9,6 +9,25 @@ document.addEventListener('DOMContentLoaded', () => {
   createModals();
 });
 
+const footer = document.querySelector('footer');
+
+if (footer) {
+  const discordLink = document.createElement('a');
+  discordLink.href = 'https://dsc.gg/otolab';
+  discordLink.target = '_blank';
+  discordLink.textContent = 'Discord';
+
+  const sourceCodeLink = document.createElement('a');
+  sourceCodeLink.href = 'https://github.com/otoneko1102/just-fuck-typescript';
+  sourceCodeLink.target = '_blank';
+  sourceCodeLink.textContent = 'Source Code';
+
+  // footerに要素を追加
+  footer.appendChild(discordLink);
+  footer.appendChild(sourceCodeLink);
+}
+
+
 function createModals() {
   // Create custom alert modal
   const alertModal = document.createElement('div');
