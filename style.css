@@ -195,7 +195,7 @@ h2 {
 
 .light-theme .buttons-container button:hover {
   background-color: black;
-  color: rgb(230, 216, 216);
+  color: #e6d8d8;
 }
 
 .menu-toggle {
