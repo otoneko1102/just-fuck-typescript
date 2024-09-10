@@ -195,15 +195,15 @@ h2 {
 
 .light-theme .buttons-container button:hover {
   background-color: black;
-  color: white;
+  color: rgb(230, 216, 216);
 }
 
 .menu-toggle {
   position: fixed;
-  top: 10px;
-  left: 10px;
+  top: 0;
+  left: 0;
   font-size: 24px;
-  background: none;
+  background-color: transparent;
   border: none;
   cursor: pointer;
   z-index: 1000;

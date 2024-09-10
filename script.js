@@ -12,21 +12,28 @@ document.addEventListener('DOMContentLoaded', () => {
 const footer = document.querySelector('footer');
 
 if (footer) {
-  const discordLink = document.createElement('a');
-  discordLink.href = 'https://dsc.gg/otolab';
-  discordLink.target = '_blank';
-  discordLink.textContent = 'Discord';
-
-  const sourceCodeLink = document.createElement('a');
-  sourceCodeLink.href = 'https://github.com/otoneko1102/just-fuck-typescript';
-  sourceCodeLink.target = '_blank';
-  sourceCodeLink.textContent = 'Source Code';
-
-  // footerに要素を追加
-  footer.appendChild(discordLink);
-  footer.appendChild(sourceCodeLink);
+  const links = [
+    {
+      url: 'https://dsc.gg/otolab',
+      textContent: 'Discord'
+    },
+    {
+      url: 'https://github.com/otoneko1102/just-fuck-typescript',
+      textContent: 'Source'
+    },
+    {
+      url: 'https://otoneko.jp/',
+      textContent: 'Dev Homepage'
+    }
+  ];
+  for (const link of links) {
+    const element = document.createElement('a');
+    element.href = link.url;
+    element.textContent = link.textContent;
+    element.target = '_blank';
+    footer.appendChild(element);
+  }
 }
-
 
 function createModals() {
   // Create custom alert modal
