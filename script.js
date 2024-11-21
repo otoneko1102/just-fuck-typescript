@@ -139,8 +139,9 @@ fetch('./sitemap.xml')
       const li = document.createElement('li');
       const a = document.createElement('a');
       a.href = url.textContent;
-      const text = url.textContent.split('/').at(-1)
-      a.textContent = url.textContent.split('//').at(-1) === text ? 'home' : text;
+      let text = url.textContent.split('/').at(-1);
+      if (text.endsWith('.html')) text = text.replace('.html', '');
+      a.textContent = url.textContent.split('//').at(-1) === text || !text ? 'home' : text;
       li.appendChild(a);
       menuItems.appendChild(li);
     });
