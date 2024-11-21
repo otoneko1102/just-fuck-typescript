@@ -14,7 +14,7 @@ const footer = document.querySelector('footer');
 if (footer) {
   const links = [
     {
-      url: 'https://dsc.gg/otolab',
+      url: 'https://dsc.gg/otohome',
       textContent: 'Discord'
     },
     {
@@ -22,7 +22,7 @@ if (footer) {
       textContent: 'Source'
     },
     {
-      url: 'https://otoneko.jp/',
+      url: 'https://www.otoneko.cat',
       textContent: 'Dev Homepage'
     }
   ];
